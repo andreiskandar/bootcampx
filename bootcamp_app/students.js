@@ -1,17 +1,17 @@
 const { Pool } = require('pg');
 
 const config = {
-	user: 'vagrant',
-	password: '123',
-	host: 'localhost',
-	database: 'bootcampx',
-	port: 5432,
+  user: 'vagrant',
+  password: '123',
+  host: 'localhost',
+  database: 'bootcampx',
+  port: 5432,
 };
 
 const pool = new Pool(config);
 
 pool.connect(() => {
-	console.log('connected to the database');
+  console.log('connected to the database');
 });
 
 // pool.connect().then((client) => {
@@ -64,21 +64,21 @@ const limit = process.argv[3];
 
 const values = [`%${cohortName}%`, limit];
 pool
-	.query(
-		`SELECT students.id,
+  .query(
+    `SELECT students.id,
       students.name as name,
       cohorts.name as cohort
       FROM students
       JOIN cohorts ON cohorts.id = students.cohort_id
       WHERE cohorts.name LIKE $1
       LIMIT $2`,
-		values
-	)
-	.then((res) => {
-		res.rows.forEach((student) =>
-			console.log(
-				`${student.name} has an id of ${student.id} and was in the ${student.cohort} cohort`
-			)
-		);
-	})
-	.catch((err) => console.error('query error', err.stack));
+    values
+  )
+  .then((res) => {
+    res.rows.forEach((student) =>
+      console.log(
+        `${student.name} has an id of ${student.id} and was in the ${student.cohort} cohort`
+      )
+    );
+  })
+  .catch((err) => console.error('query error', err.stack));
