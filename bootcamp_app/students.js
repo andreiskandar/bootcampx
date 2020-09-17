@@ -15,49 +15,49 @@ pool.connect(() => {
 });
 
 // pool.connect().then((client) => {
-// 	return client
-// 		.query(
-// 			`SELECT students.id, students.name as name,
+//   return client
+//     .query(
+//       `SELECT students.id, students.name as name,
 //         cohorts.name as cohort_name
 //         FROM students
 //         JOIN cohorts on cohorts.id = cohort_id
 //         LIMIT 5;`
-// 		) // your query string here
-// 		.then((res) => {
-// 			res.rows.forEach((student) => {
-// 				console.log(
-// 					`${student.name} has an id of ${student.id} and was in the ${student.cohort_name} cohort`
-// 				);
-// 			});
+//     ) // your query string here
+//     .then((res) => {
+//       res.rows.forEach((student) => {
+//         console.log(
+//           `${student.name} has an id of ${student.id} and was in the ${student.cohort_name} cohort`
+//         );
+//       });
 
-// 			client.release();
-// 		})
-// 		.catch((e) => {
-// 			client.release();
-// 			console.log(e.stack); // your callback here
-// 		});
+//       client.release();
+//     })
+//     .catch((e) => {
+//       client.release();
+//       console.log(e.stack); // your callback here
+//     });
 // });
 
 // pool
-// 	.query(
-// 		`SELECT students.id, students.name as name,
+//   .query(
+//     `SELECT students.id, students.name as name,
 //     cohorts.name as cohort_name
 //     FROM students
 //     JOIN cohorts on cohorts.id = cohort_id
 //     LIMIT 5;`
-// 	)
-// 	.then((res) => {
-// 		res.rows.forEach((student) => {
-// 			console.log(
-// 				`${student.name} has an id of ${student.id} and was in the ${student.cohort_name} cohort`
-// 			);
-// 		});
-// 		// pool.end()
-// 		// .then((res) => console.log('pool is ended'));
-// 		pool.end(() => {
-// 			console.log('pool has ended');
-// 		});
-// 	});
+//   )
+//   .then((res) => {
+//     res.rows.forEach((student) => {
+//       console.log(
+//         `${student.name} has an id of ${student.id} and was in the ${student.cohort_name} cohort`
+//       );
+//     });
+//     // pool.end()
+//     // .then((res) => console.log('pool is ended'));
+//     pool.end(() => {
+//       console.log('pool has ended');
+//     });
+//   });
 
 const cohortName = process.argv[2];
 const limit = process.argv[3];
