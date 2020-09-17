@@ -1,11 +1,11 @@
+require('dotenv').config();
 const { Client } = require('pg');
 
 const config = {
-  user: 'vagrant',
-  database: 'bootcampx',
-  password: '123',
-  host: 'localhost',
-  PORT: 5432,
+  user: process.env.DB_USER,
+  database: process.env.DB_NAME,
+  password: process.env.DB_PASS,
+  host: process.env.DB_HOST,
 };
 
 const client = new Client(config);

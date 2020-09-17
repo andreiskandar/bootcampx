@@ -1,11 +1,12 @@
+require('dotenv').config();
 const { Pool } = require('pg');
 
 const config = {
-  user: 'vagrant',
-  password: '123',
-  host: 'localhost',
-  database: 'bootcampx',
-  port: 5432,
+  user: process.env.DB_USER,
+  database: process.env.DB_NAME,
+  password: process.env.DB_PASS,
+  host: process.env.DB_HOST,
+  PORT: 5432,
 };
 
 const pool = new Pool(config);
