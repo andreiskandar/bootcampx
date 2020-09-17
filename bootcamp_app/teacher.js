@@ -22,8 +22,9 @@ FROM cohorts co
 JOIN students std ON std.cohort_id = co.id
 JOIN assistance_requests asr ON asr.student_id = std.id
 JOIN teachers t ON t.id = asr.teacher_id
-WHERE co.name = '${process.argv[2] || 'JUL02'}'
-ORDER BY t.name;`
+WHERE co.name = $1
+ORDER BY t.name;`,
+		[cohort]
 	)
 	.then((res) => {
 		res.rows.forEach((el) => {
